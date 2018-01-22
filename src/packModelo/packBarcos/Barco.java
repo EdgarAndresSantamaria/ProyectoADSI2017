@@ -2,7 +2,7 @@ package packModelo.packBarcos;
 
 import java.util.ArrayList;
 
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 import packModelo.packCoordenada.Coordenada;
 import packModelo.packCoordenada.ListaCoordenadas;
 
@@ -51,7 +51,7 @@ public abstract class Barco {
 	public boolean ponerEscudo() {
 		boolean puesto = false;
 		if (escudo == 0) {
-			escudo = DatosJuego.VALOR_ESCUDO;
+			escudo = Nivel.VALOR_ESCUDO;
 			puesto = true;
 		}
 		return puesto;

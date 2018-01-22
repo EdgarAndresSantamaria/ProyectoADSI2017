@@ -7,7 +7,7 @@ import java.util.Random;
 import packModelo.Almacen;
 import packModelo.Battleship;
 import packModelo.Cantidades;
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 import packModelo.Radar;
 import packModelo.packBarcos.Barco;
 import packModelo.packBarcos.BarcoNoEncException;
@@ -36,7 +36,7 @@ public abstract class Jugador extends Observable {
 		barcosEneDest = new ListaBarcos();
 		listaTocadasEnem = new ListaCoordenadas();
 		listaNoPonerB = new ListaCoordenadas();
-		dinero = DatosJuego.DINERO_INICIAL;
+		dinero = Nivel.DINERO_INICIAL;
 		radar = new Radar();
 	}
 
@@ -93,29 +93,29 @@ public abstract class Jugador extends Observable {
 			if (meLlega(pArma)) {
 				exito = true;
 				switch (pArma) {
-				case DatosJuego.NUM_ESCUDO:
+				case Nivel.NUM_ESCUDO:
 					Almacen.getAlmacen().venderEscudo();
-					dinero = dinero - DatosJuego.PRECIO_ESCUDO;
+					dinero = dinero - Nivel.PRECIO_ESCUDO;
 					armamento.addEscudo();
 					break;
-				case DatosJuego.NUM_MISIL:
+				case Nivel.NUM_MISIL:
 					Almacen.getAlmacen().venderMisil();
-					dinero = dinero - DatosJuego.PRECIO_MISIL;
+					dinero = dinero - Nivel.PRECIO_MISIL;
 					armamento.addMisil();
 					break;
-				case DatosJuego.NUM_MISIL_NS:
+				case Nivel.NUM_MISIL_NS:
 					Almacen.getAlmacen().venderMisilNS();
-					dinero = dinero - DatosJuego.PRECIO_MISIL_NS;
+					dinero = dinero - Nivel.PRECIO_MISIL_NS;
 					armamento.addMisilNS();
 					break;
-				case DatosJuego.NUM_MISIL_EO:
+				case Nivel.NUM_MISIL_EO:
 					Almacen.getAlmacen().venderMisilEO();
-					dinero = dinero - DatosJuego.PRECIO_MISIL_EO;
+					dinero = dinero - Nivel.PRECIO_MISIL_EO;
 					armamento.addMisilEO();
 					break;
-				case DatosJuego.NUM_MISIL_BOOM:
+				case Nivel.NUM_MISIL_BOOM:
 					Almacen.getAlmacen().venderMisilBOOM();
-					dinero = dinero - DatosJuego.PRECIO_MISIL_BOOM;
+					dinero = dinero - Nivel.PRECIO_MISIL_BOOM;
 					armamento.addMisilBOOM();
 					break;
 				}
@@ -127,28 +127,28 @@ public abstract class Jugador extends Observable {
 	private boolean meLlega(int pArma) {
 		boolean suficiente = false;
 		switch (pArma) {
-		case DatosJuego.NUM_ESCUDO:
-			if (dinero >= DatosJuego.PRECIO_ESCUDO) {
+		case Nivel.NUM_ESCUDO:
+			if (dinero >= Nivel.PRECIO_ESCUDO) {
 				suficiente = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL:
-			if (dinero >= DatosJuego.PRECIO_MISIL) {
+		case Nivel.NUM_MISIL:
+			if (dinero >= Nivel.PRECIO_MISIL) {
 				suficiente = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_NS:
-			if (dinero >= DatosJuego.PRECIO_MISIL_NS) {
+		case Nivel.NUM_MISIL_NS:
+			if (dinero >= Nivel.PRECIO_MISIL_NS) {
 				suficiente = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_EO:
-			if (dinero >= DatosJuego.PRECIO_MISIL_EO) {
+		case Nivel.NUM_MISIL_EO:
+			if (dinero >= Nivel.PRECIO_MISIL_EO) {
 				suficiente = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_BOOM:
-			if (dinero >= DatosJuego.PRECIO_MISIL_BOOM) {
+		case Nivel.NUM_MISIL_BOOM:
+			if (dinero >= Nivel.PRECIO_MISIL_BOOM) {
 				suficiente = true;
 			}
 			break;
@@ -203,30 +203,30 @@ public abstract class Jugador extends Observable {
 	public boolean puedeUsar(int pArma) {
 		boolean puede = false;
 		switch (pArma) {
-		case DatosJuego.NUM_ESCUDO:
+		case Nivel.NUM_ESCUDO:
 			if (armamento.getEscudo() > 0) {
 				puede = true;
 			}
 			break;
-		case DatosJuego.NUM_BOMBA:
+		case Nivel.NUM_BOMBA:
 			puede = true;
 			break;
-		case DatosJuego.NUM_MISIL:
+		case Nivel.NUM_MISIL:
 			if (armamento.getMisil() > 0) {
 				puede = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_NS:
+		case Nivel.NUM_MISIL_NS:
 			if (armamento.getMisilNS() > 0) {
 				puede = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_EO:
+		case Nivel.NUM_MISIL_EO:
 			if (armamento.getMisilEO() > 0) {
 				puede = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_BOOM:
+		case Nivel.NUM_MISIL_BOOM:
 			if (armamento.getMisilBOOM() > 0) {
 				puede = true;
 			}
@@ -243,7 +243,7 @@ public abstract class Jugador extends Observable {
 	public void usarMisilNS(Coordenada pCoordenada) {
 		ListaBarcos listaBa = new ListaBarcos();
 		Coordenada c;
-		for (int y = 0; y < DatosJuego.FILAS_TABLERO; y++) {
+		for (int y = 0; y < Nivel.FILAS_TABLERO; y++) {
 			c = new Coordenada(pCoordenada.getX(), y);
 			try {
 				listaBa.buscarBarco(c);
@@ -271,7 +271,7 @@ public abstract class Jugador extends Observable {
 	public void usarMisilEO(Coordenada pCoordenada) {
 		ListaBarcos listaBa = new ListaBarcos();
 		Coordenada c;
-		for (int x = 0; x < DatosJuego.COLUMNAS_TABLERO; x++) {
+		for (int x = 0; x < Nivel.COLUMNAS_TABLERO; x++) {
 			c = new Coordenada(x, pCoordenada.getY());
 			try {
 				listaBa.buscarBarco(c);
@@ -299,7 +299,7 @@ public abstract class Jugador extends Observable {
 		usarMisilNS(pCoordenada);
 		ListaBarcos listaBa = new ListaBarcos();
 		Coordenada c;
-		for (int x = 0; x < DatosJuego.COLUMNAS_TABLERO; x++) {
+		for (int x = 0; x < Nivel.COLUMNAS_TABLERO; x++) {
 			c = new Coordenada(x, pCoordenada.getY());
 			try {
 				listaBa.buscarBarco(c);
@@ -327,12 +327,12 @@ public abstract class Jugador extends Observable {
 	public boolean repararBarco(Coordenada pCoordenada) {
 		boolean exito = false;
 		try {
-			if (dinero >= DatosJuego.PRECIO_REPARAR) {
+			if (dinero >= Nivel.PRECIO_REPARAR) {
 				Barco unBarco = this.listaBarcos.buscarBarco(pCoordenada);
 				ArrayList<Coordenada> resultado = unBarco.repararBarco();
 				if (resultado != null) {
 					exito = true;
-					dinero = dinero - DatosJuego.PRECIO_REPARAR;
+					dinero = dinero - Nivel.PRECIO_REPARAR;
 					if (Battleship.getBattleship().getTurno()) {
 						Battleship.getBattleship().getOrdenador().addCoordenadasDisparar(resultado);
 					}
@@ -348,22 +348,22 @@ public abstract class Jugador extends Observable {
 		Barco unBarco;
 
 		// Portaaviones (1)
-		boolean puesto = false;
-		while (!puesto) {
-			unBarco = new Portaaviones(new Coordenada(rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1),
-					rdn.nextInt(DatosJuego.FILAS_TABLERO - 1)), rdn.nextBoolean());
+		barcosPuestos = 0;
+		while (barcosPuestos < Nivel.NUM_PORTAAVIONES) {
+			unBarco = new Portaaviones(new Coordenada(rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1),
+					rdn.nextInt(Nivel.FILAS_TABLERO - 1)), rdn.nextBoolean());
 			if (puedeColocar(unBarco)) {
 				anadirAdyacentesBarco(unBarco);
 				anadirBarcoProp(unBarco);
-				puesto = true;
+				barcosPuestos++;
 			}
 		}
 
 		// Submarinos (2)
 		barcosPuestos = 0;
-		while (barcosPuestos < DatosJuego.NUM_SUBMARINO) {
-			unBarco = new Submarino(new Coordenada(rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1),
-					rdn.nextInt(DatosJuego.FILAS_TABLERO - 1)), rdn.nextBoolean());
+		while (barcosPuestos < Nivel.NUM_SUBMARINO) {
+			unBarco = new Submarino(new Coordenada(rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1),
+					rdn.nextInt(Nivel.FILAS_TABLERO - 1)), rdn.nextBoolean());
 			if (puedeColocar(unBarco)) {
 				anadirAdyacentesBarco(unBarco);
 				anadirBarcoProp(unBarco);
@@ -373,9 +373,9 @@ public abstract class Jugador extends Observable {
 
 		// Destructores (3)
 		barcosPuestos = 0;
-		while (barcosPuestos < DatosJuego.NUM_DESTRUCTOR) {
-			unBarco = new Destructor(new Coordenada(rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1),
-					rdn.nextInt(DatosJuego.FILAS_TABLERO - 1)), rdn.nextBoolean());
+		while (barcosPuestos < Nivel.NUM_DESTRUCTOR) {
+			unBarco = new Destructor(new Coordenada(rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1),
+					rdn.nextInt(Nivel.FILAS_TABLERO - 1)), rdn.nextBoolean());
 			if (puedeColocar(unBarco)) {
 				anadirAdyacentesBarco(unBarco);
 				anadirBarcoProp(unBarco);
@@ -385,9 +385,9 @@ public abstract class Jugador extends Observable {
 
 		// Fragata (4)
 		barcosPuestos = 0;
-		while (barcosPuestos < DatosJuego.NUM_FRAGATA) {
-			unBarco = new Fragata(new Coordenada(rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1),
-					rdn.nextInt(DatosJuego.FILAS_TABLERO - 1)));
+		while (barcosPuestos < Nivel.NUM_FRAGATA) {
+			unBarco = new Fragata(new Coordenada(rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1),
+					rdn.nextInt(Nivel.FILAS_TABLERO - 1)));
 			if (puedeColocar(unBarco)) {
 				anadirAdyacentesBarco(unBarco);
 				anadirBarcoProp(unBarco);

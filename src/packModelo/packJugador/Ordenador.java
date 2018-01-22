@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import packModelo.Battleship;
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 import packModelo.packBarcos.Barco;
 import packModelo.packBarcos.BarcoNoEncException;
 import packModelo.packCoordenada.Coordenada;
@@ -22,7 +22,7 @@ public class Ordenador extends Jugador {
 	}
 
 	public void jugar() throws BarcoNoEncException {
-		System.out.println("--- Nueva acción ---");
+		System.out.println("--- Nueva acciï¿½n ---");
 		if (Math.random() <= 0.65) { // 65% probabilidad de usar bomba
 			dispararBomba();
 			Battleship.getBattleship().setTurno(true);
@@ -43,8 +43,8 @@ public class Ordenador extends Jugador {
 			} else if (mr > 0.80 && mr <= 0.85) { // 5% Mover el radar
 				System.out.println("Radar movido\n");
 				Random rdn = new Random();
-				int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-				int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+				int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+				int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 				Coordenada co = new Coordenada(x, y);
 				Battleship.getBattleship().getUsuario().moverRadar(co);
 				jugar();
@@ -76,8 +76,8 @@ public class Ordenador extends Jugador {
 		if (listDisparar.vacia()) {
 			boolean disparado = false;
 			while (!disparado) {
-				int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO);
-				int y = rdn.nextInt(DatosJuego.FILAS_TABLERO);
+				int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO);
+				int y = rdn.nextInt(Nivel.FILAS_TABLERO);
 				Coordenada co = new Coordenada(x, y);
 				if (!listNoDisparar.estaEnLista(co)) {
 					usarBomba(co);
@@ -101,8 +101,8 @@ public class Ordenador extends Jugador {
 			if (listDisparar.vacia()) {
 				boolean disparado = false;
 				while (!disparado) {
-					int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-					int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+					int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+					int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 					Coordenada co = new Coordenada(x, y);
 					if (!listNoDisparar.estaEnLista(co)) {
 						usarMisil(co);
@@ -114,13 +114,13 @@ public class Ordenador extends Jugador {
 				usarMisil(co);
 			}
 		} else { // Si no tiene misil, intenta comprar
-			if (comprarArma(DatosJuego.NUM_MISIL)) {
+			if (comprarArma(Nivel.NUM_MISIL)) {
 				System.out.println("Misil comprado\n");
 				if (listDisparar.vacia()) {
 					boolean disparado = false;
 					while (!disparado) {
-						int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-						int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+						int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+						int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 						Coordenada co = new Coordenada(x, y);
 						if (!listNoDisparar.estaEnLista(co)) {
 							usarMisil(co);
@@ -145,8 +145,8 @@ public class Ordenador extends Jugador {
 			if (listDisparar.vacia()) {
 				boolean disparado = false;
 				while (!disparado) {
-					int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-					int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+					int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+					int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 					Coordenada co = new Coordenada(x, y);
 					if (!listNoDisparar.estaEnLista(co)) {
 						usarMisilNS(co);
@@ -160,13 +160,13 @@ public class Ordenador extends Jugador {
 				usarMisilNS(co);
 			}
 		} else { // Si no tiene misilNS, intenta comprar
-			if (comprarArma(DatosJuego.NUM_MISIL_NS)) {
+			if (comprarArma(Nivel.NUM_MISIL_NS)) {
 				System.out.println("MisilNS comprado\n");
 				if (listDisparar.vacia()) {
 					boolean disparado = false;
 					while (!disparado) {
-						int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-						int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+						int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+						int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 						Coordenada co = new Coordenada(x, y);
 						if (!listNoDisparar.estaEnLista(co)) {
 							usarMisilNS(co);
@@ -193,8 +193,8 @@ public class Ordenador extends Jugador {
 			if (listDisparar.vacia()) {
 				boolean disparado = false;
 				while (!disparado) {
-					int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-					int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+					int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+					int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 					Coordenada co = new Coordenada(x, y);
 					if (!listNoDisparar.estaEnLista(co)) {
 						usarMisilEO(co);
@@ -208,13 +208,13 @@ public class Ordenador extends Jugador {
 				usarMisilEO(co);
 			}
 		} else { // Si no tiene misilEO, intenta comprar
-			if (comprarArma(DatosJuego.NUM_MISIL_EO)) {
+			if (comprarArma(Nivel.NUM_MISIL_EO)) {
 				System.out.println("MisilEO comprado\n");
 				if (listDisparar.vacia()) {
 					boolean disparado = false;
 					while (!disparado) {
-						int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-						int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+						int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+						int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 						Coordenada co = new Coordenada(x, y);
 						if (!listNoDisparar.estaEnLista(co)) {
 							usarMisilEO(co);
@@ -241,8 +241,8 @@ public class Ordenador extends Jugador {
 			boolean puesto = false;
 			int cont = 0;
 			while (!puesto && cont < 10) {
-				int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-				int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+				int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+				int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 				Coordenada co = new Coordenada(x, y);
 				if (ponerEscudo(co)) {
 					System.out.println("Escudo puesto en (" + co.getX() + "," + co.getY() + ")\n");
@@ -254,13 +254,13 @@ public class Ordenador extends Jugador {
 				System.out.println("Escudo no puesto\n");
 				dispararBomba();
 			}
-		} else if (comprarArma(DatosJuego.NUM_ESCUDO)) {
+		} else if (comprarArma(Nivel.NUM_ESCUDO)) {
 			System.out.println("Escudo comprado\n");
 			boolean puesto = false;
 			int cont = 0;
-			while (!puesto && cont < DatosJuego.COLUMNAS_TABLERO * DatosJuego.COLUMNAS_TABLERO / 2) {
-				int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-				int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+			while (!puesto && cont < Nivel.COLUMNAS_TABLERO * Nivel.COLUMNAS_TABLERO / 2) {
+				int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+				int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 				Coordenada co = new Coordenada(x, y);
 				if (ponerEscudo(co)) {
 					System.out.println("Escudo puesto en (" + co.getX() + "," + co.getY() + ")\n");
@@ -283,8 +283,8 @@ public class Ordenador extends Jugador {
 			if (listDisparar.vacia()) {
 				boolean disparado = false;
 				while (!disparado) {
-					int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-					int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+					int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+					int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 					Coordenada co = new Coordenada(x, y);
 					if (!listNoDisparar.estaEnLista(co)) {
 						usarMisilBOOM(co);
@@ -298,13 +298,13 @@ public class Ordenador extends Jugador {
 				usarMisilBOOM(co);
 			}
 		} else { // Si no tiene misil, intenta comprar
-			if (comprarArma(DatosJuego.NUM_MISIL_BOOM)) {
+			if (comprarArma(Nivel.NUM_MISIL_BOOM)) {
 				System.out.println("MisilBOOM comprado\n");
 				if (listDisparar.vacia()) {
 					boolean disparado = false;
 					while (!disparado) {
-						int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-						int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+						int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+						int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 						Coordenada co = new Coordenada(x, y);
 						if (!listNoDisparar.estaEnLista(co)) {
 							usarMisilBOOM(co);
@@ -327,12 +327,12 @@ public class Ordenador extends Jugador {
 	private void repararseBarco() throws BarcoNoEncException {
 		System.out.println("Intenta Reparar\n");
 		Random rdn = new Random();
-		if (getDinero() >= DatosJuego.PRECIO_REPARAR) { // Si le llega repara
+		if (getDinero() >= Nivel.PRECIO_REPARAR) { // Si le llega repara
 			boolean reparado = false;
 			int cont = 0;
 			while (!reparado && cont < 10) {
-				int x = rdn.nextInt(DatosJuego.COLUMNAS_TABLERO - 1);
-				int y = rdn.nextInt(DatosJuego.FILAS_TABLERO - 1);
+				int x = rdn.nextInt(Nivel.COLUMNAS_TABLERO - 1);
+				int y = rdn.nextInt(Nivel.FILAS_TABLERO - 1);
 				Coordenada co = new Coordenada(x, y);
 				if (repararBarco(co)) {
 					System.out.println("Barco reparado en (" + co.getX() + "," + co.getY() + ")\n");
@@ -347,11 +347,11 @@ public class Ordenador extends Jugador {
 				cont++;
 			}
 			if (!reparado) {
-				System.out.println("Ningún barco reparado\n");
+				System.out.println("Ningï¿½n barco reparado\n");
 				dispararBomba();
 			}
 		} else {
-			System.out.println("Dinero insuficiente, ningún barco reparado\n");
+			System.out.println("Dinero insuficiente, ningï¿½n barco reparado\n");
 			dispararBomba();
 		}
 	}

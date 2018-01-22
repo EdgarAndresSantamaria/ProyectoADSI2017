@@ -1,6 +1,6 @@
 package packModelo.packBarcos;
 
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 import packModelo.packCoordenada.Coordenada;
 
 public class Fragata extends Barco {
@@ -12,6 +12,6 @@ public class Fragata extends Barco {
 	}
 
 	public boolean puedePonerse(ListaBarcos listaBarcos) {
-		return listaBarcos.getNumBarcosRestantes(this.getTipo()) < DatosJuego.NUM_FRAGATA;
+		return listaBarcos.getNumBarcosRestantes(this.getTipo()) < Nivel.NUM_FRAGATA;
 	}
 }

@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
 import packModelo.Battleship;
 import packModelo.packCoordenada.Coordenada;
 import packVista.Inicio;
@@ -16,12 +17,13 @@ public class CBtnsColocar implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		JButton btn = (JButton) e.getSource();
 		if (btn.isEnabled()) {
+			
 			if (Inicio.getInicio().getTipo() != null) {
 				String coor[] = btn.getName().split(",");
 				Coordenada c = new Coordenada(Integer.parseInt(coor[0]), Integer.parseInt(coor[1]));
 				if (!Battleship.getBattleship().puedeColocar(Inicio.getInicio().getTipo(), c,
 						Inicio.getInicio().isVertical())) {
-					JOptionPane.showMessageDialog(null, "¡Seleccione una posición correcta, por favor!", "Alerta",
+					JOptionPane.showMessageDialog(null, "ï¿½Seleccione una posiciï¿½n correcta, por favor!", "Alerta",
 							JOptionPane.WARNING_MESSAGE);
 				} else {
 					Battleship.getBattleship().colocarBarcoUs(Inicio.getInicio().getTipo(), c,
@@ -38,7 +40,7 @@ public class CBtnsColocar implements MouseListener {
 					}
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Seleccione algún barco para comenzar la colocación.",
+				JOptionPane.showMessageDialog(null, "Seleccione algï¿½n barco para comenzar la colocaciï¿½n.",
 						"Alerta", JOptionPane.WARNING_MESSAGE);
 			}
 		}

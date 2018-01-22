@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 import packVista.TableroJuego;
 
 public class CBtnUsarBomba implements MouseListener {
@@ -13,7 +13,7 @@ public class CBtnUsarBomba implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		JButton btn = (JButton) e.getSource();
 		if (btn.isEnabled()) {
-			TableroJuego.getTableroJuego().setArma(DatosJuego.NUM_BOMBA);
+			TableroJuego.getTableroJuego().setArma(Nivel.NUM_BOMBA);
 			TableroJuego.getTableroJuego().getLblArmamento().setText("Armamento seleccionado: Bomba");
 		}
 	}

@@ -1,10 +1,17 @@
 package packModelo;
 
+import java.util.Date;
 import java.util.Observable;
 
+import org.json.simple.JSONArray;
+
+import packControlador.retar.Gestor_Retos;
+import packControlador.retar.Gestor_Usuario;
+import packGestores.GestorNiveles;
 import packModelo.packBarcos.Barco;
 import packModelo.packBarcos.BarcoNoEncException;
 import packModelo.packBarcos.BarcosFactory;
+import packModelo.packBarcos.ListaBarcos;
 import packModelo.packCoordenada.Coordenada;
 import packModelo.packJugador.Ordenador;
 import packModelo.packJugador.Usuario;
@@ -27,8 +34,8 @@ public class Battleship extends Observable {
 		return theBattleship;
 	}
 
-	public void inicializar() {
-		usuario = new Usuario();
+	public void inicializar(String nombre) {
+		usuario = new Usuario(nombre);
 		ordenador = new Ordenador();
 		ordenador.colocarBarcosAleatorios();
 		ordenador.imprimirTablero();
@@ -37,6 +44,7 @@ public class Battleship extends Observable {
 	}
 
 	public void colocarBarcoUs(String pTipo, Coordenada pC, boolean pVertical) {
+		
 		Barco unBarco = BarcosFactory.getBarcoFactory().crearBarco(pTipo, pC, pVertical);
 		usuario.anadirAdyacentesBarco(unBarco);
 		usuario.colocarBarco(unBarco);
@@ -157,7 +165,8 @@ public class Battleship extends Observable {
 	}
 
 	public boolean todosBarcosUsPuestos() {
-		return usuario.getListaBarcos().numBarcos() >= DatosJuego.NUM_BARCOS;
+		
+		return usuario.getListaBarcos().numBarcos() >= Nivel.NUM_BARCOS;
 	}
 
 	public int getDineroUsuario() {
@@ -207,5 +216,52 @@ public class Battleship extends Observable {
 			setChanged();
 			notifyObservers(cambios);
 		} catch (BarcoNoEncException e) {}
+	}
+	 /*
+	  * recoge los niveles que haya introducido en el sistema para mostrarlos
+	  * en la interfaz de "Seleccion de nivel"
+	  */
+	public JSONArray buscarNiveles() {
+		
+		return GestorNiveles.getGestorNiveles().buscarNiveles();
+		
+	}
+	/*
+	 * Carga los datos del nivel en el sistema
+	 */
+	public void conseguiDatos (int nivel) {
+		GestorNiveles.getGestorNiveles().conseguirNiveles(nivel);
+	}
+
+	public String obtenerUsuarios(){
+		return Gestor_Usuario.getInstancia().obtenerUsuarios();
+	}
+
+	public boolean retar(String UsrSeleccionado){
+		//recogemos la información de la partida actual
+		Partida act=Partida.getInstancia();
+		Date laFecha=new Date();
+		ListaBarcos laLIstaBarcosO=act.getFlotaO();
+		ListaBarcos laLIstaBarcosH=act.getFlotaH();
+		int laPuntuacion=act.getPuntuacion();
+		int elNivel=act.getConfig();
+		//creamos un nuevo reto
+		return Gestor_Retos.getInstancia().crearReto(act.getRetador(),UsrSeleccionado,laFecha,laLIstaBarcosO,laLIstaBarcosH,laPuntuacion,elNivel);
+	}
+
+	public String obtenerMisRetos(String usr){
+		return Gestor_Retos.getInstancia().obtenerMisRetos(usr);
+	}
+
+	public boolean cargarReto(String cod){
+		GestorNiveles.getGestorNiveles().conseguirNiveles(Gestor_Retos.getInstancia().getNivel(cod));
+		ListaBarcos barcosH=Gestor_Retos.getInstancia().getFlotaH(cod);
+		ListaBarcos barcosO=Gestor_Retos.getInstancia().getFlotaO(cod);
+		if(barcosH==null || barcosO==null){
+			//ocurrio un error
+			return false;
+		}else {
+			return Partida.getInstancia().cargarSituacionInicial(barcosO, barcosH);
+		}
 	}
 }

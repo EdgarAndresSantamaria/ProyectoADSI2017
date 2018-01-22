@@ -4,7 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
-import packModelo.DatosJuego;
+
+import packModelo.Nivel;
 import packVista.TableroJuego;
 
 public class CBtnMoverRadar implements MouseListener {
@@ -12,7 +13,7 @@ public class CBtnMoverRadar implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		JButton btn = (JButton) e.getSource();
 		if (btn.isEnabled()) {
-			TableroJuego.getTableroJuego().setArma(DatosJuego.NUM_MOVER_RADAR);
+			TableroJuego.getTableroJuego().setArma(Nivel.NUM_MOVER_RADAR);
 			TableroJuego.getTableroJuego().getLblArmamento().setText("Armamento seleccionado: Mover Radar");
 		}
 		TableroJuego.getTableroJuego().actualizarCantidades();

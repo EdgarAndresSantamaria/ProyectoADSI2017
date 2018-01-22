@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 import packVista.TableroJuego;
 
 public class CBtnUsarEscudo implements MouseListener {
@@ -13,7 +13,7 @@ public class CBtnUsarEscudo implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		JButton btn = (JButton) e.getSource();
 		if (btn.isEnabled()) {
-			TableroJuego.getTableroJuego().setArma(DatosJuego.NUM_ESCUDO);
+			TableroJuego.getTableroJuego().setArma(Nivel.NUM_ESCUDO);
 			TableroJuego.getTableroJuego().getLblArmamento().setText("Armamento seleccionado: Escudo");
 		}
 	}

@@ -2,7 +2,7 @@ package packModelo.packCoordenada;
 
 import java.util.ArrayList;
 
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 
 public class Coordenada {
 	private int x;
@@ -66,7 +66,7 @@ public class Coordenada {
 
 	public boolean fueraDeLimites() {
 		boolean fueraDeLimites = false;
-		if (x < 0 || x > DatosJuego.COLUMNAS_TABLERO - 1 || y < 0 || y > DatosJuego.FILAS_TABLERO - 1) {
+		if (x < 0 || x > Nivel.COLUMNAS_TABLERO - 1 || y < 0 || y > Nivel.FILAS_TABLERO - 1) {
 			fueraDeLimites = true;
 		}
 		return fueraDeLimites;

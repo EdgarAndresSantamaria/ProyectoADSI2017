@@ -23,27 +23,27 @@ public class Almacen extends Observable {
 	public boolean puedeVender(int pArma) {
 		boolean puede = false;
 		switch (pArma) {
-		case DatosJuego.NUM_ESCUDO:
+		case Nivel.NUM_ESCUDO:
 			if (stock.getEscudo() > 0) {
 				puede = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL:
+		case Nivel.NUM_MISIL:
 			if (stock.getMisil() > 0) {
 				puede = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_NS:
+		case Nivel.NUM_MISIL_NS:
 			if (stock.getMisilNS() > 0) {
 				puede = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_EO:
+		case Nivel.NUM_MISIL_EO:
 			if (stock.getMisilEO() > 0) {
 				puede = true;
 			}
 			break;
-		case DatosJuego.NUM_MISIL_BOOM:
+		case Nivel.NUM_MISIL_BOOM:
 			if (stock.getMisilBOOM() > 0) {
 				puede = true;
 			}
@@ -54,14 +54,14 @@ public class Almacen extends Observable {
 
 	public void venderEscudo() {
 		stock.rmvEscudo();
-		info[0] = DatosJuego.NUM_ESCUDO;
+		info[0] = Nivel.NUM_ESCUDO;
 		info[1] = stock.getEscudo();
 		notificar();
 	}
 
 	public void venderMisil() {
 		stock.rmvMisil();
-		info[0] = DatosJuego.NUM_MISIL;
+		info[0] = Nivel.NUM_MISIL;
 		info[1] = stock.getMisil();
 		notificar();
 	}
@@ -69,21 +69,21 @@ public class Almacen extends Observable {
 	public void venderMisilNS() {
 		stock.rmvMisilNS();
 		;
-		info[0] = DatosJuego.NUM_MISIL_NS;
+		info[0] = Nivel.NUM_MISIL_NS;
 		info[1] = stock.getMisilNS();
 		notificar();
 	}
 
 	public void venderMisilEO() {
 		stock.rmvMisilEO();
-		info[0] = DatosJuego.NUM_MISIL_EO;
+		info[0] = Nivel.NUM_MISIL_EO;
 		info[1] = stock.getMisilEO();
 		notificar();
 	}
 
 	public void venderMisilBOOM() {
 		stock.rmvMisilBOOM();
-		info[0] = DatosJuego.NUM_MISIL_BOOM;
+		info[0] = Nivel.NUM_MISIL_BOOM;
 		info[1] = stock.getMisilBOOM();
 		notificar();
 	}

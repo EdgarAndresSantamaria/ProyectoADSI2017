@@ -1,6 +1,6 @@
 package packModelo.packBarcos;
 
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 import packModelo.packCoordenada.Coordenada;
 
 public class Submarino extends Barco {
@@ -12,18 +12,18 @@ public class Submarino extends Barco {
 		int i = 0;
 		if (pVertical) {
 			i = pC.getY() + 1;
-			while (getPosicion().numCoordenadas() < DatosJuego.LONG_SUBMARINO) {
+			while (getPosicion().numCoordenadas() < Nivel.LONG_SUBMARINO) {
 				getPosicion().addCoordenada(new Coordenada(pC.getX(), i++));
 			}
 		} else {
 			i = pC.getX() + 1;
-			while (getPosicion().numCoordenadas() < DatosJuego.LONG_SUBMARINO) {
+			while (getPosicion().numCoordenadas() < Nivel.LONG_SUBMARINO) {
 				getPosicion().addCoordenada(new Coordenada(i++, pC.getY()));
 			}
 		}
 	}
 
 	public boolean puedePonerse(ListaBarcos listaBarcos) {
-		return listaBarcos.getNumBarcosRestantes(this.getTipo()) < DatosJuego.NUM_SUBMARINO;
+		return listaBarcos.getNumBarcosRestantes(this.getTipo()) < Nivel.NUM_SUBMARINO;
 	}
 }

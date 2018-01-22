@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 
 public class ListaCoordenadas {
 	private ArrayList<Coordenada> listaCoordenadas;
@@ -91,8 +91,8 @@ public class ListaCoordenadas {
 	public boolean fueraDeLimites() {
 		boolean fueraDeLimites = false;
 		for (Coordenada co : listaCoordenadas) {
-			if (co.getX() < 0 || co.getX() > DatosJuego.COLUMNAS_TABLERO - 1 || co.getY() < 0
-					|| co.getY() > DatosJuego.FILAS_TABLERO - 1) {
+			if (co.getX() < 0 || co.getX() > Nivel.COLUMNAS_TABLERO - 1 || co.getY() < 0
+					|| co.getY() > Nivel.FILAS_TABLERO - 1) {
 				fueraDeLimites = true;
 			}
 		}

@@ -10,19 +10,19 @@ public class Cantidades {
 	public Cantidades() {}
 
 	public void iniciarAlmacen() {
-		misil = DatosJuego.CANT_MISIL;
-		misilNS = DatosJuego.CANT_MISIL_NS;
-		misilEO = DatosJuego.CANT_MISIL_EO;
-		misilBOOM = DatosJuego.CANT_MISIL_BOOM;
-		escudo = DatosJuego.CANT_ESCUDO;
+		misil = Nivel.CANT_MISIL;
+		misilNS = Nivel.CANT_MISIL_NS;
+		misilEO = Nivel.CANT_MISIL_EO;
+		misilBOOM = Nivel.CANT_MISIL_BOOM;
+		escudo = Nivel.CANT_ESCUDO;
 	}
 
 	public void iniciarJugador() {
-		misil = DatosJuego.INI_MISIL;
-		misilNS = DatosJuego.INI_MISIL_NS;
-		misilEO = DatosJuego.INI_MISIL_EO;
-		misilBOOM = DatosJuego.INI_MISIL_BOOM;
-		escudo = DatosJuego.INI_ESCUDO;
+		misil = Nivel.INI_MISIL;
+		misilNS = Nivel.INI_MISIL_NS;
+		misilEO = Nivel.INI_MISIL_EO;
+		misilBOOM = Nivel.INI_MISIL_BOOM;
+		escudo = Nivel.INI_ESCUDO;
 	}
 
 	public int getMisil() {

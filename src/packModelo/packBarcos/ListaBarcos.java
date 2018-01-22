@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import packModelo.DatosJuego;
+import packModelo.Nivel;
 import packModelo.packCoordenada.Coordenada;
 
 public class ListaBarcos {
@@ -68,8 +68,8 @@ public class ListaBarcos {
 
 	public void imprimirTablero() {
 		System.out.println("");
-		for (int i = 0; i < DatosJuego.FILAS_TABLERO; i++) {
-			for (int j = 0; j < DatosJuego.COLUMNAS_TABLERO; j++) {
+		for (int i = 0; i < Nivel.FILAS_TABLERO; i++) {
+			for (int j = 0; j < Nivel.COLUMNAS_TABLERO; j++) {
 				try {
 					buscarBarco(new Coordenada(j, i));
 					System.out.print("X ");
@@ -83,6 +83,6 @@ public class ListaBarcos {
 	}
 
 	public boolean completa() {
-		return numBarcos() > DatosJuego.NUM_BARCOS - 2;
+		return numBarcos() > Nivel.NUM_BARCOS - 2;
 	}
 }
