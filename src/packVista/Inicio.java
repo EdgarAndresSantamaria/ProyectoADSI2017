@@ -88,7 +88,7 @@ public class Inicio extends JFrame {
 	        	
 	        	Inicio.getInicio().dispose();
 	     		MenuPrincipal frame = MenuPrincipal.getMenuPrincipal();
-	     		frame.empezar(user);
+	     		frame.empezar();
 	     		frame.setLocationRelativeTo(null);
 	     		frame.setVisible(true); 
 	     		

@@ -17,7 +17,7 @@ public class GestorBD {
 	//private String db= "Battleship";
 	private String ConexionBD = "jdbc:mysql://localhost:3306/Battleship";
 	private String SentenciaSQL;
-	private String user = "";
+	private String user = "root";
 	private String password = "";
 	private Connection CanalBD;
 	private Statement Instruccion;

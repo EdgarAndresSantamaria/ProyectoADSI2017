@@ -222,9 +222,7 @@ public class Battleship extends Observable {
 	  * en la interfaz de "Seleccion de nivel"
 	  */
 	public JSONArray buscarNiveles() {
-		
 		return GestorNiveles.getGestorNiveles().buscarNiveles();
-		
 	}
 	/*
 	 * Carga los datos del nivel en el sistema
@@ -238,7 +236,7 @@ public class Battleship extends Observable {
 	}
 
 	public boolean retar(String UsrSeleccionado){
-		//recogemos la información de la partida actual
+		//recogemos la informaciï¿½n de la partida actual
 		Partida act=Partida.getInstancia();
 		Date laFecha=new Date();
 		ListaBarcos laLIstaBarcosO=act.getFlotaO();

@@ -1,6 +1,5 @@
 package packVista;
 
-import java.awt.EventQueue;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -12,7 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 import org.json.simple.JSONArray;
 
+
 import packControlador.ContSeleccionNivel.CBtnAceptar;
+
 import packModelo.Battleship;
 
 public class SeleccionarNivel extends JFrame {
@@ -25,22 +26,7 @@ public class SeleccionarNivel extends JFrame {
 	private static SeleccionarNivel miSeleccionarNivel;
 	private JComboBox<Integer> comboBox = new JComboBox<Integer>();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SeleccionarNivel frame = getSeleccionarNivel();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -63,7 +49,7 @@ public class SeleccionarNivel extends JFrame {
 		buscarNiveles();
 		addWindowListener(new WindowAdapter() {
 	         public void windowClosing(WindowEvent e) {
-	        	SeleccionarNivel.getSeleccionarNivel().dispose();
+				SeleccionarNivel.getSeleccionarNivel().dispose();
 	     		MenuPrincipal frame = MenuPrincipal.getMenuPrincipal();
 	     		frame.empezar();
 	     		frame.setLocationRelativeTo(null);
@@ -73,21 +59,21 @@ public class SeleccionarNivel extends JFrame {
 	    });
 		
 	}
-	
-	public static SeleccionarNivel getSeleccionarNivel() {
+
+	public static SeleccionarNivel getSeleccionarNivel(){
 		if (miSeleccionarNivel==null) {
 			miSeleccionarNivel=new SeleccionarNivel();
 		}
 		return miSeleccionarNivel;
 	}
 	
-	private void buscarNiveles() {
+	private void buscarNiveles(){
 		JSONArray json= Battleship.getBattleship().buscarNiveles();
-		
-		for(int i= json.size()-1; i >= 0;i--) {
-			comboBox.addItem((int)json.get(i));
-        }
-		
+			
+			for(int i= json.size()-1; i >= 0;i--) {
+				
+				comboBox.addItem((int)json.get(i));
+			}
 	}
 	
 	public int getSelected() {

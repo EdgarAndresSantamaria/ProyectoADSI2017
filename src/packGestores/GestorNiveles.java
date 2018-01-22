@@ -1,11 +1,11 @@
 package packGestores;
+
+import packModelo.Nivel;
+import org.json.simple.JSONArray;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
-
-import org.json.simple.JSONArray;
-
-import packModelo.Nivel;
 
 
 
@@ -37,14 +37,12 @@ public class GestorNiveles {
 	public  JSONArray buscarNiveles() {
 		int nivel=0;
 		JSONArray json= new JSONArray();
-		int i=0;
 		ResultSet res = GestorBD.getGestorBD().Select("SELECT nivel FROM niveles");
 		try {
 			while (res.next()) {
 				nivel=res.getInt("nivel");
-				if (nivel != 0) {
-					json.add(i, nivel);
-			        
+				if (nivel != 0) {		
+					json.add(nivel);	        
 				}
 			}
 		} catch (SQLException e) {
