@@ -7,3 +7,5 @@ Mikel Abad, Andima Freire, Julen Mendiguren (motor de juego)
 Proyecto de Análisis y Diseño de Sistemas de Información
 Sobre el proyecto dado se aplicaron mejoras por parte de Edgar Andrés stión de Niveles (gestión de Retos) 
 y Dei Royo (Gestión de Niveles).
+
+El juego a pesar de no contar con todas las funcionalidades previstas es totalmente funcional y muy divertido con unas reglas novedosas, pruebalo.
